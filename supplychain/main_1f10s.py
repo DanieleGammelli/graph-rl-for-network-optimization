@@ -126,7 +126,7 @@ else:
     np.random.seed(args.seed)
     if args.algo == 'rl':
         # Load pre-trained model
-        model.load_checkpoint(path=f"./{args.directory}/ckpt/1f10s/graph_rl.pth")
+        model.load_checkpoint(path=f"./{args.directory}/pretrained/1f10s/graph_rl.pth")
     test_episodes = args.max_episodes #set max number of training episodes
     T = args.max_steps #set episode length
     epochs = trange(test_episodes) #epoch iterator
