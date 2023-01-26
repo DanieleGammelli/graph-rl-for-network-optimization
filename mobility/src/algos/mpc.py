@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Aug  5 22:09:46 2020
-@author: yangk
-"""
 from collections import defaultdict
 import numpy as np
 import subprocess
