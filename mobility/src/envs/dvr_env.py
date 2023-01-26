@@ -1,7 +1,7 @@
 """
-Autonomous Mobility-on-Demand Environment
+DVR Environment
 -----------------------------------------
-This file contains the specifications for the AMoD system simulator. In particular, we implement:
+This file contains the specifications for the DVR system simulator. In particular, we implement:
 (1) GNNParser
     Converts raw environment observations to agent inputs (s_t).
 (2) GNNActor:

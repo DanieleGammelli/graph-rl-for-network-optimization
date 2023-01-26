@@ -1,4 +1,4 @@
-# Dynamic Vehicle Routing
+# Supply Chain Inventory Management
 
 ## Contents
 
@@ -8,16 +8,14 @@
     * `/mpc.py`: wrapper around the MPC used as "Oracle" benchmark
 * `src/cplex_mod/`: formulations for optimization problems (CPLEX) 
     * `/lcp.mod`: LCP problem 
-    * `/matching.mod`: passanger matching problem
     * `/mpc.mod`: model predictive control formulation
-* `src/envs/dvr_env.py`: DVR simulator 
+* `src/envs/scim_env.py`: SCIM simulator 
 * `src/misc/`: helper functions
-* `data/`: json files for NY and SHE experiments
 * `saved_files/`: directory for saving results, logging, etc.
 
 ## Usage
 
-Use `main_ny.py` and `main_she.py` to train and evaluate graph control algorithms on NY and SHE environments, respectively.
+Use `main_1f2s.py`, `main_1f3s.py`, and  `main_1f10s.py` to train and evaluate graph control algorithms on 1F2S, 1F3S, and 1F10S environments, respectively.
 
 The code allows to test all algorithms evaluated in the paper via the following specification of the `algo` argument:
 
@@ -41,13 +39,11 @@ model arguments:
     --max_steps     number of steps per episode (default: T=20)
     --no-cuda       disables CUDA training (default: True, i.e. run on CPU)
     --directory     defines directory where to log files (default: saved_files)
+    --s_store       optimal store order-up-to-level 
+    --s_factory     optimal factory order-up-to-level 
     
 simulator arguments: (unless necessary, we recommend using the provided ones)
-    --seed          random seed (default: NY=10, SHE=10)
-    --demand_ratio  (default: NY=9, SHE=2.5)
-    --json_hr       (default: NY=19, SHE=8)
-    --json_tsetp    (default: NY=4, SHE=3)
-    --no-beta       (default: NY=0.5, SHE=0.5)
+    --seed          random seed (default: 1010)
 ```
 
 ## Example
@@ -55,23 +51,23 @@ simulator arguments: (unless necessary, we recommend using the provided ones)
 To train an agent (with the default parameters) run:
 
 ```bash
-python main_ny.py
+python main_1f3s.py
 ```
 
 To train for a custom number of episodes, e.g., 55k:
 
 ```bash
-python main_ny.py --max_episodes=55000
+python main_1f3s.py --max_episodes=55000
 ```
 
 To evaluate a pretrained agent run the following:
 
 ```bash
-python main_ny.py --test=True
+python main_1f3s.py --test=True
 ```
 
 To evaluate the domain-driven heuristic for 10 test episodes:
 
 ```bash
-python main_ny.py --test=True --algo='heur' --max_episodes=10
+python main_1f3s.py --test=True --algo='heur' --max_episodes=10
 ```

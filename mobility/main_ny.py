@@ -8,7 +8,7 @@ import os
 import sys
 
 sys.path.append(os.getcwd())
-from src.envs.amod_env import Scenario, DVR
+from src.envs.dvr_env import Scenario, DVR
 from src.algos.graph_rl_agent import A2C
 from src.algos.lcp_solver import solveLCP
 from src.misc.utils import dictsum
